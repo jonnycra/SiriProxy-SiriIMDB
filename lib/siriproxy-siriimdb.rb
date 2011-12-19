@@ -47,6 +47,12 @@ class SiriProxy::Plugin::SiriIMDB < SiriProxy::Plugin
   	say "Opening #{userAction.chop}."
       request_completed
   end  
+  
+  listen_for /good night (.*)/i do |userAction|
+  	`osascript -e 'tell application "All Lights Off" to activate'`
+  	say "Sweet dreams, Jon."
+      request_completed
+  end
 
   listen_for /how many stars did (.*) get/i do |movieTitle|
 	movieTitle = movieTitle.split(' ').map {|w| w.capitalize }.join(' ')
