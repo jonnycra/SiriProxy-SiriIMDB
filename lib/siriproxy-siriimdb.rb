@@ -48,6 +48,15 @@ class SiriProxy::Plugin::SiriIMDB < SiriProxy::Plugin
       request_completed
   end  
   
+  listen_for /kill (.*)/i do |userAction|
+      while userAction.empty? do
+          userAction = ask "What program?"
+      end
+      `osascript -e 'tell application "#{userAction.chop}" to quit'`
+  	say "Killing #{userAction.chop}."
+      request_completed
+  end
+  
   listen_for /good night (.*)/i do |userAction|
   	`osascript -e 'tell application "All Lights Off" to activate'`
   	say "Sweet dreams!"
