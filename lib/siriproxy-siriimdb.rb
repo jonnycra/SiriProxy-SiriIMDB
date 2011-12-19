@@ -81,7 +81,7 @@ class SiriProxy::Plugin::SiriIMDB < SiriProxy::Plugin
 	elsif (movieRating < 8)
 		say "I'd recommend seeing " + movieTitle + ", it got " + movieRatingString + " stars."
 	elsif (movieRating >= 8)
-		say "" + movieTitle + " is a must-see.  It got " + movieRatingString + " stars. And I hacked up this script."
+		say "" + movieTitle + " is a must-see.  It got " + movieRatingString + " stars."
 	end
     request_completed
   end
