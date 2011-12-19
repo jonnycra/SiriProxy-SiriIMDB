@@ -32,6 +32,12 @@ class SiriProxy::Plugin::SiriIMDB < SiriProxy::Plugin
 	return movieRating
   end
 
+  listen_for /test apples/i do
+    say "Jesus, Jon.  Will you fucking knock it off with the apples?" #say something to the user!
+    
+    request_completed #always complete your request! Otherwise the phone will "spin" at the user!
+  end
+
   listen_for /how many stars did (.*) get/i do |movieTitle|
 	movieTitle = movieTitle.split(' ').map {|w| w.capitalize }.join(' ')
 	#Search for the movie and get the rating as a string
